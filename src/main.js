@@ -177,7 +177,7 @@ var Kalendae = function (targetElement, options) {
 			
 		} else if (util.hasClassName(target.parentNode, classes.days) && util.hasClassName(target, classes.dayActive) && (clickedDate = target.getAttribute('data-date'))) {
 		//DAY CLICK
-			clickedDate = moment(clickedDate, opts.dayAttributeFormat).hours(12);
+			clickedDate = moment(clickedDate, opts.dayAttributeFormat).hours(opts.hours);
 			if (self.publish('date-clicked', self, [clickedDate]) !== false) {
 			
 				switch (opts.mode) {
@@ -229,6 +229,7 @@ Kalendae.prototype = {
 		parseSplitDelimiter:	/,\s*|\s+-\s+/,	/* regex to use for splitting multiple dates from a passed string */
 		rangeDelimiter:			' - ',			/* string to use between dates when outputting in range mode */
 		multipleDelimiter:		', ',			/* string to use between dates when outputting in multiple mode */
+		hours:					      12				/* number to set the default hour on which the date gets selected */
 		
 		dateClassMap:			{}
 	},
